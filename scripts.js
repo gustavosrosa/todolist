@@ -1,4 +1,5 @@
 const NAME_LOCAL_STORAGE = "todos";
+const APP = "#app";
 
 const todosApp = {
 
@@ -41,4 +42,4 @@ const todosApp = {
 
 };
 
-Vue.createApp(todosApp).mount("#app");
+Vue.createApp(todosApp).mount(APP);
