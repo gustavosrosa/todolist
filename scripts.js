@@ -16,17 +16,21 @@ const todosApp = {
     methods: {
         clearTasks() {
             this.tasks = emptyList;
-            this.setItemStorage(this.tasks);
+            window.localStorage.removeItem(NAME_LOCAL_STORAGE);
+            window.location.reload();
         },
         addNewTask() {
-            if (this.newTask.title.trim() !== emptyString) {
+            let newTaskClean = this.newTask.title.trim();
+            let titleFoundInTasks = this.tasks.filter((task) => task.title == newTaskClean);
+            if ((newTaskClean.trim() !== emptyString) && titleFoundInTasks.length == 0) {
                 this.tasks.push(this.newTask);
 
                 this.newTask = {
                     done: false,
                 };
+                this.setItemStorage(this.tasks);
             }
-            this.setItemStorage(this.tasks);
+            
         },
         setItemStorage(task) {
             window.localStorage.setItem(NAME_LOCAL_STORAGE, JSON.stringify(task));
