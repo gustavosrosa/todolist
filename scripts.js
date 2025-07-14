@@ -1,11 +1,13 @@
 const NAME_LOCAL_STORAGE = "todos";
 const APP = "#app";
+const emptyList = [];
+const emptyString = '';
 
 const todosApp = {
 
     data() {
         return {
-            tasks: [],
+            tasks: emptyList,
             newTask: {
                 done: false,
             }
@@ -13,11 +15,11 @@ const todosApp = {
     },
     methods: {
         clearTasks() {
-            this.tasks = [];
+            this.tasks = emptyList;
             this.setItemStorage(this.tasks);
         },
         addNewTask() {
-            if (this.newTask.title.trim() !== '') {
+            if (this.newTask.title.trim() !== emptyString) {
                 this.tasks.push(this.newTask);
 
                 this.newTask = {
